@@ -1,0 +1,17 @@
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csprojAssemblyReference.cache
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.Form1.resources
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.Properties.Resources.resources
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.GenerateResource.cache
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.CoreCompileInputs.cache
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\liblept172.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\libtesseract304.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\liblept172.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\libtesseract304.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\CMTransRev.exe.config
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\CMTransRev.exe
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\CMTransRev.pdb
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\Tesseract.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\Tesseract.xml
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.CopyComplete
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.exe
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.pdb
