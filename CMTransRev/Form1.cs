@@ -15,7 +15,7 @@ namespace CMTransRev
 {
     public partial class Form1 : Form
     {
-
+        Bitmap img;
 
         public static Bitmap GrayScale(Bitmap b)
         {
@@ -107,7 +107,8 @@ namespace CMTransRev
         private Page textDetect(Bitmap img)
         {
             var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
-            var page = ocr.Process(img);
+
+            var page = ocr.Process(img, Tesseract.PageSegMode.SingleChar);
             String iText = page.GetText();
             if(iText != "")
             {
@@ -117,6 +118,73 @@ namespace CMTransRev
             return page;
         }
         //test
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+            //for(int i = 0; i < img.Width; i++)
+            //{
+            //    for(int j = 0; j < img.Height; j++)
+            //    {
+            int i = 0;
+            int j = 0;
+            int x = 100;
+            Recal:
+
+            int top = 10;
+          
+                Int32.TryParse(textBox2.Text,out x);
+
+            Page page;
+            Bitmap cloneBitmap;
+            do
+            {
+                top += x;
+                int z = 0;
+                if (top > (img.Height - j))
+                {
+                    top = img.Height - j; // - (img.Height / 10) - j;
+                }
+                do
+                {
+                    z += 100;
+                    if (z > (img.Width - i ))
+                    {
+                        z = img.Width - i; // - (img.Width / 10) - i;
+                    }
+
+
+                    // Rectangle cloneRect = new Rectangle(i, j, i + img.Width / 8, j + top + img.Height / 10);
+                    //  Rectangle cloneRect = new Rectangle(i, j, 400,364);
+                    Rectangle cloneRect = new Rectangle(i, j, z, top);
+                    // j += 9;
+
+
+
+                    System.Drawing.Imaging.PixelFormat format =
+                        img.PixelFormat;
+                    cloneBitmap = img.Clone(cloneRect, format);
+                    page = textDetect(cloneBitmap);
+                    
+                } while (page.GetMeanConfidence() * 100 <= 77 && z < (img.Width - i));
+
+                
+                
+            } while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
+            textBox1.Text += page.GetText();
+            label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
+            if (page.GetMeanConfidence() * 100 >= 77)
+            {
+                j = top;
+                goto Recal;
+            }
+
+            
+           
+            // Draw the cloned portion of the Bitmap object.
+            pictureBox1.Image = cloneBitmap;
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
@@ -124,37 +192,53 @@ namespace CMTransRev
                 //Page page = new Page;
             {
 
-                var img = new Bitmap(openfile.FileName);
-                var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
-                //for(int i = 0; i < img.Width; i++)
-                //{
-                //    for(int j = 0; j < img.Height; j++)
-                //    {
-                int i = 0;
-                int j = 0;
-                        Rectangle cloneRect = new Rectangle(i,j,i+img.Width/10,j+img.Width/10);
-                       // j += 9;
+                 img = new Bitmap(openfile.FileName);
+              //  var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+              //  //for(int i = 0; i < img.Width; i++)
+              //  //{
+              //  //    for(int j = 0; j < img.Height; j++)
+              //  //    {
+              //  int i = 0;
+              //  int j = 0;
+              //  int top = 100;
+                
+              //  Page page;
+              //  Bitmap cloneBitmap;
+              //  do
+              //  {
+              //     if (top >(img.Height - (img.Height / 10) - j))
+              //     {
+              //          top = img.Height - (img.Height / 10) - j;
+              //     }
+              //  Rectangle cloneRect = new Rectangle(i, j, i + img.Width / 8, j + top + img.Height / 10);
+              ////  Rectangle cloneRect = new Rectangle(i, j, 400,364);
+              //  // j += 9;
 
 
-                        
-                        System.Drawing.Imaging.PixelFormat format =
-                        img.PixelFormat;
-                        Bitmap cloneBitmap = img.Clone(cloneRect, format);
-                        Page page = textDetect(cloneBitmap);
-                        textBox1.Text += page.GetText();
-                        label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
-                        // Draw the cloned portion of the Bitmap object.
-                        pictureBox1.Image = cloneBitmap;
-                //    }
-                //   i += 9;
-                //}
+
+              //  System.Drawing.Imaging.PixelFormat format =
+              //      img.PixelFormat;
+              //       cloneBitmap = img.Clone(cloneRect, format);
+              //      page = textDetect(cloneBitmap);
+              //      top += 50;
+                    
+              // } while (page.GetMeanConfidence() * 100 <= 90);
+              //          textBox1.Text += page.GetText();
+              //          label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
+              //          // Draw the cloned portion of the Bitmap object.
+              //          pictureBox1.Image = cloneBitmap;
+              //  //    }
+              //  //   i += 9;
+              //  //}
                 
                 
-              //  pictureBox1.Image = img;
-                textBox1.ReadOnly = true;
-               // pictureBox1.Image = GrayScale(img);
+              ////  pictureBox1.Image = img;
+              //  textBox1.ReadOnly = true;
+              // // pictureBox1.Image = GrayScale(img);
             }
 
         }
+
+       
     }
 }
