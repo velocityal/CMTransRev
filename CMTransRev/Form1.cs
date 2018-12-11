@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -10,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tesseract;
-
 namespace CMTransRev
 {
     public partial class Form1 : Form
@@ -84,7 +84,7 @@ namespace CMTransRev
 
             //create some image attributes
             ImageAttributes attributes = new ImageAttributes();
-
+            
             //set the color matrix attribute
             attributes.SetColorMatrix(colorMatrix);
 
@@ -98,6 +98,71 @@ namespace CMTransRev
             return newBitmap;
         }
 
+        private Bitmap rescale(Bitmap img, int stride)
+        {
+           
+
+           
+            Bitmap oBitmap = img;
+            Graphics oGraphic = Graphics.FromImage(oBitmap);
+
+            // color black pixels (i think the default is black but this helps to explain)
+            SolidBrush oBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+            oGraphic.FillRectangle(oBrush, 0, 0, 1, 1);
+            oGraphic.FillRectangle(oBrush, 1, 1, 1, 1);
+
+            //color white pixels
+            oBrush = new SolidBrush(Color.FromArgb(0, 0, 0));
+            oGraphic.FillRectangle(oBrush, 0, 1, 1, 1);
+            oGraphic.FillRectangle(oBrush, 1, 0, 1, 1);
+
+            // downscale to with 2x2
+            Bitmap result = new Bitmap(img.Width/stride, img.Height/stride);
+            using (Graphics graphics = Graphics.FromImage(result))
+            {
+                // I don't know what these settings should be :
+
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+
+                //draw the image into the target bitmap 
+                graphics.DrawImage(oBitmap, 0, 0, result.Width, result.Height);
+            }
+
+            pictureBox1.Height = result.Height;
+            pictureBox1.Width = result.Width;
+            pictureBox2.Height = result.Height;
+            pictureBox2.Width = result.Width;
+            pictureBox1.Image = img;
+            pictureBox2.Image = result;
+            return result;
+        }
+
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
 
         public Form1()
         {
@@ -110,7 +175,7 @@ namespace CMTransRev
 
             var page = ocr.Process(img, Tesseract.PageSegMode.SingleChar);
             String iText = page.GetText();
-            if(iText != "")
+            if(page.GetMeanConfidence() > 0.7)
             {
                 return page;
             }
@@ -191,8 +256,9 @@ namespace CMTransRev
             if (openfile.ShowDialog() == DialogResult.OK)
                 //Page page = new Page;
             {
-
-                 img = new Bitmap(openfile.FileName);
+                int x = Int32.Parse(textBox3.Text);
+                img = new Bitmap(openfile.FileName);
+                img = rescale(img, x);
               //  var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
               //  //for(int i = 0; i < img.Width; i++)
               //  //{
@@ -239,6 +305,9 @@ namespace CMTransRev
 
         }
 
-       
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
