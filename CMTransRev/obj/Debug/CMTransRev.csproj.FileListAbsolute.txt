@@ -15,3 +15,36 @@ C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\D
 C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.CopyComplete
 C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.exe
 C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\obj\Debug\CMTransRev.pdb
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\liblept172.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\libtesseract304.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\liblept172.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\libtesseract304.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\CMTransRev.exe.config
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\CMTransRev.exe
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\CMTransRev.pdb
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\Tesseract.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\Tesseract.xml
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csprojResolveAssemblyReference.cache
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.Form1.resources
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.Properties.Resources.resources
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.GenerateResource.cache
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.CoreCompileInputs.cache
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.csproj.CopyComplete
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.exe
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\obj\Debug\CMTransRev.pdb
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.danbloomberg.leptonica-1.75.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.jpeg-9.2.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.madler.zlib-1.2.11.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.openjpeg.openjp2-2.3.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.png-1.6.33.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.tiff-4.0.9.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.webp-0.6.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.xz_utils.lzma-5.2.3.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.danbloomberg.leptonica-1.75.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.jpeg-9.2.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.madler.zlib-1.2.11.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.openjpeg.openjp2-2.3.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.png-1.6.33.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.tiff-4.0.9.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.webp-0.6.0.dll
+C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.xz_utils.lzma-5.2.3.dll

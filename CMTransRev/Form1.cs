@@ -11,12 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tesseract;
+
 namespace CMTransRev
 {
     public partial class Form1 : Form
     {
+        TesseractEngine ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
         Bitmap img;
-
+        int testtop;
+        int newtop;
         public static Bitmap GrayScale(Bitmap b)
         {
 
@@ -169,12 +172,14 @@ namespace CMTransRev
             InitializeComponent();
         }
 
-        private Page textDetect(Bitmap img)
+        private Page textDetect(Bitmap pic)
         {
             var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
-
-            var page = ocr.Process(img, Tesseract.PageSegMode.SingleChar);
+            //Tesseract recog = new Tesseract(./tessdata", "jpn", Tesseract.OcrEngineMode.OEM_TESSERACT_ONLY);
+            var page = ocr.Process(pic, Tesseract.PageSegMode.SingleChar);
+            
             String iText = page.GetText();
+            Console.WriteLine("Height: " + pic.Height);
             if(page.GetMeanConfidence() > 0.7)
             {
                 return page;
@@ -184,9 +189,11 @@ namespace CMTransRev
         }
         //test
 
+
+
         private void button2_Click_1(object sender, EventArgs e)
         {
-            var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+           
             //for(int i = 0; i < img.Width; i++)
             //{
             //    for(int j = 0; j < img.Height; j++)
@@ -256,9 +263,14 @@ namespace CMTransRev
             if (openfile.ShowDialog() == DialogResult.OK)
                 //Page page = new Page;
             {
-                int x = Int32.Parse(textBox3.Text);
+                int x = 1;
+                x = Int32.Parse(textBox3.Text);
                 img = new Bitmap(openfile.FileName);
-                img = rescale(img, x);
+               // var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+              // img = ocr.Process(img).;
+                 img = rescale(img, x);
+               // ocr.Process(img).AnalyseLayout();
+                label2.Text = img.Height.ToString();
               //  var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
               //  //for(int i = 0; i < img.Width; i++)
               //  //{
@@ -307,6 +319,96 @@ namespace CMTransRev
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            int i = 0;
+            int j = 0;
+            int x = 100;
+            int top = 10;
+            button3.Click += (sender2, e2) => button3_Click(sender2, e2, i, x, top);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e, int i, int x, int top)
+        {
+            int j = testtop;
+
+           
+            //var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+            //for(int i = 0; i < img.Width; i++)
+            //{
+            //    for(int j = 0; j < img.Height; j++)
+            //    {
+            
+            Recal:
+            
+            
+
+            Int32.TryParse(textBox2.Text, out x);
+
+            Page page;
+            Bitmap cloneBitmap;
+            Relapse:
+           // do
+           // {
+                newtop += x;
+            top = newtop;
+            int z = 0;
+                if (top > (img.Height - j))
+                {
+                    top = img.Height - j; // - (img.Height / 10) - j;
+                }
+               // do
+               // {
+                    z += 100;
+                    if (z > (img.Width - i))
+                    {
+                        z = img.Width - i; // - (img.Width / 10) - i;
+                    }
+
+
+                    // Rectangle cloneRect = new Rectangle(i, j, i + img.Width / 8, j + top + img.Height / 10);
+                    //  Rectangle cloneRect = new Rectangle(i, j, 400,364);
+                    Rectangle cloneRect = new Rectangle(i, j, z, top);
+                    // j += 9;
+
+
+
+                    System.Drawing.Imaging.PixelFormat format =
+                        img.PixelFormat;
+                    cloneBitmap = img.Clone(cloneRect, format);
+            pictureBox1.Image = cloneBitmap;
+            page = textDetect(cloneBitmap);
+
+               // } while (page.GetMeanConfidence() * 100 <= 77 && z < (img.Width - i));
+
+
+
+            //} while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
+           
+            
+            if (page.GetMeanConfidence() * 100 >= 69 || top >= (img.Height - j))
+            {
+               
+                textBox1.Text += page.GetText();
+                testtop = top;
+                newtop = 0;
+               // goto Recal;
+            }
+            else
+            {
+        //        goto Relapse;
+            }
+
+
+
+            // Draw the cloned portion of the Bitmap object.
+            label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
+            
+
+        }
+
+        private void test()
+        {
+
 
         }
     }
