@@ -48,3 +48,19 @@ C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.d
 C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.tiff-4.0.9.dll
 C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.webp-0.6.0.dll
 C:\Users\Burds\Documents\GITCOMP\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.xz_utils.lzma-5.2.3.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.danbloomberg.leptonica-1.75.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.jpeg-9.2.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.madler.zlib-1.2.11.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.openjpeg.openjp2-2.3.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.png-1.6.33.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.tiff-4.0.9.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.webp-0.6.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x64\pvt.cppan.demo.xz_utils.lzma-5.2.3.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.danbloomberg.leptonica-1.75.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.jpeg-9.2.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.madler.zlib-1.2.11.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.openjpeg.openjp2-2.3.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.png-1.6.33.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.tiff-4.0.9.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.webp-0.6.0.dll
+C:\Users\burds\Documents\Visual Studio 2017\Projects\CMTransRev\CMTransRev\bin\Debug\x86\pvt.cppan.demo.xz_utils.lzma-5.2.3.dll

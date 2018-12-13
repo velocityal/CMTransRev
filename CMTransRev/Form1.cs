@@ -385,7 +385,7 @@ namespace CMTransRev
             //} while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
            
             
-            if (page.GetMeanConfidence() * 100 >= 69 || top >= (img.Height - j))
+            if ((page.GetMeanConfidence() * 100 >= 69 ) || top >= (img.Height - j))
             {
                
                 textBox1.Text += page.GetText();
@@ -404,6 +404,23 @@ namespace CMTransRev
             label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
             
 
+        }
+
+        public Boolean GetBlackDots(int j)
+        {
+            Color pixelColor;
+            var list = new List<String>();
+            //for (int y = 0; y < img.Height; y++)
+            //{
+                for (int x = 0; x < img.Width; x++)
+                {
+                    pixelColor = img.GetPixel(x, j);
+                if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
+                    return true;
+                       // list.Add(String.Format("x:{0} y:{1}", x, j));
+                }
+           //}
+            return false;
         }
 
         private void test()
