@@ -376,50 +376,62 @@ namespace CMTransRev
                         img.PixelFormat;
                     cloneBitmap = img.Clone(cloneRect, format);
             pictureBox1.Image = cloneBitmap;
-            page = textDetect(cloneBitmap);
-
-               // } while (page.GetMeanConfidence() * 100 <= 77 && z < (img.Width - i));
-
-
-
-            //} while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
-           
+            if (GetBlackDots(top, x, cloneBitmap) == true)
+            {
+                goto Relapse;
+            }
+  
             
-            if ((page.GetMeanConfidence() * 100 >= 69 ) || top >= (img.Height - j))
-            {
+                //goto Ext;
+                page = textDetect(cloneBitmap);
+
+                // } while (page.GetMeanConfidence() * 100 <= 77 && z < (img.Width - i));
+
+
+
+                //} while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
+
+
+                if ((page.GetMeanConfidence() * 100 >= 69) || top >= (img.Height - j))
+                {
+
+                    textBox1.Text += page.GetText();
+                    testtop = top;
+                    newtop = 0;
+                    // goto Recal;
+                }
+                else
+                {
+                    //        goto Relapse;
+                }
+
+            
                
-                textBox1.Text += page.GetText();
-                testtop = top;
-                newtop = 0;
-               // goto Recal;
-            }
-            else
-            {
-        //        goto Relapse;
-            }
-
-
-
             // Draw the cloned portion of the Bitmap object.
             label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
-            
+           // Ext:;
 
         }
 
-        public Boolean GetBlackDots(int j)
+        public Boolean GetBlackDots(int j, int i, Bitmap pic)
         {
+            //if(i > j)
+            //{
+            //    i = 0;
+            //}
             Color pixelColor;
             var list = new List<String>();
-            //for (int y = 0; y < img.Height; y++)
-            //{
+            for (int y = 0; y < i; y++)
+            {
                 for (int x = 0; x < img.Width; x++)
                 {
-                    pixelColor = img.GetPixel(x, j);
-                if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
+                    pixelColor = img.GetPixel(x, j + y);
+                if (pixelColor.R <= 200 && pixelColor.G <= 200 && pixelColor.B <= 200)
                     return true;
                        // list.Add(String.Format("x:{0} y:{1}", x, j));
                 }
-           //}
+                return false;
+            }
             return false;
         }
 
