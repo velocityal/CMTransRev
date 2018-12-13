@@ -396,7 +396,7 @@ namespace CMTransRev
                 {
 
                     textBox1.Text += page.GetText();
-                    testtop = top;
+                    testtop += top;
                     newtop = 0;
                     // goto Recal;
                 }
