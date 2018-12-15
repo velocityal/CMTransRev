@@ -201,6 +201,7 @@ namespace CMTransRev
             int i = 0;
             int j = 0;
             int x = 100;
+            int counter = 0;
             Recal:
 
             int top = 10;
@@ -211,14 +212,21 @@ namespace CMTransRev
             Bitmap cloneBitmap;
             do
             {
-                top += x;
+
+               
+
+                Relapse:
+                newtop += x;
+                top = newtop;
                 int z = 0;
+                top += x;
+               // int z = 0;
                 if (top > (img.Height - j))
                 {
                     top = img.Height - j; // - (img.Height / 10) - j;
                 }
-                do
-                {
+             //   do
+              //  {
                     z += 100;
                     if (z > (img.Width - i ))
                     {
@@ -236,23 +244,36 @@ namespace CMTransRev
                     System.Drawing.Imaging.PixelFormat format =
                         img.PixelFormat;
                     cloneBitmap = img.Clone(cloneRect, format);
+                    if (GetBlackDots(top, x, cloneBitmap) == true)
+                    {
+                        goto Relapse;
+                    }
                     page = textDetect(cloneBitmap);
                     
-                } while (page.GetMeanConfidence() * 100 <= 77 && z < (img.Width - i));
+              //  } while (page.GetMeanConfidence() * 100 <= 69 && z < (img.Width - i));
 
                 
                 
-            } while (page.GetMeanConfidence() * 100 <= 77 && top < (img.Height - j));
+           
             textBox1.Text += page.GetText();
             label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
-            if (page.GetMeanConfidence() * 100 >= 77)
-            {
-                j = top;
-                goto Recal;
-            }
+                //if (page.GetMeanConfidence() * 100 >= 77)
+                //{
+                //    j = top;
+                //    goto Recal;
+                //}
+                if ((page.GetMeanConfidence() * 100 >= 69))
+                {
 
-            
-           
+                    textBox1.Text += page.GetText();
+                    testtop += top;
+                    newtop = 0;
+                    // goto Recal;
+                }
+                counter++;
+                Console.Write(counter);
+            } while (top < (img.Height - j));
+
             // Draw the cloned portion of the Bitmap object.
             pictureBox1.Image = cloneBitmap;
 
@@ -269,6 +290,7 @@ namespace CMTransRev
                // var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
               // img = ocr.Process(img).;
                  img = rescale(img, x);
+                img = MakeGrayscale3(img);
                // ocr.Process(img).AnalyseLayout();
                 label2.Text = img.Height.ToString();
               //  var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
@@ -330,58 +352,63 @@ namespace CMTransRev
         private void button3_Click(object sender, EventArgs e, int i, int x, int top)
         {
             int j = testtop;
+            do
+            {
+               j = testtop;
 
-           
-            //var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
-            //for(int i = 0; i < img.Width; i++)
-            //{
-            //    for(int j = 0; j < img.Height; j++)
-            //    {
-            
-            Recal:
-            
-            
 
-            Int32.TryParse(textBox2.Text, out x);
 
-            Page page;
-            Bitmap cloneBitmap;
-            Relapse:
-           // do
-           // {
+                //var ocr = new TesseractEngine("./tessdata", "jpn", EngineMode.Default);
+                //for(int i = 0; i < img.Width; i++)
+                //{
+                //    for(int j = 0; j < img.Height; j++)
+                //    {
+
+                Recal:
+
+
+
+                Int32.TryParse(textBox2.Text, out x);
+
+                Page page;
+                Bitmap cloneBitmap;
+                Relapse:
+                // do
+                // {
                 newtop += x;
-            top = newtop;
-            int z = 0;
+                top = newtop;
+                int z = 0;
                 if (top > (img.Height - j))
                 {
                     top = img.Height - j; // - (img.Height / 10) - j;
                 }
-               // do
-               // {
-                    z += 100;
-                    if (z > (img.Width - i))
-                    {
-                        z = img.Width - i; // - (img.Width / 10) - i;
-                    }
+
+                // do
+                // {
+                z += 100;
+                if (z > (img.Width - i))
+                {
+                    z = img.Width - i; // - (img.Width / 10) - i;
+                }
 
 
-                    // Rectangle cloneRect = new Rectangle(i, j, i + img.Width / 8, j + top + img.Height / 10);
-                    //  Rectangle cloneRect = new Rectangle(i, j, 400,364);
-                    Rectangle cloneRect = new Rectangle(i, j, z, top);
-                    // j += 9;
+                // Rectangle cloneRect = new Rectangle(i, j, i + img.Width / 8, j + top + img.Height / 10);
+                //  Rectangle cloneRect = new Rectangle(i, j, 400,364);
+                Rectangle cloneRect = new Rectangle(i, j, z, top);
+                // j += 9;
 
 
 
-                    System.Drawing.Imaging.PixelFormat format =
-                        img.PixelFormat;
-                    cloneBitmap = img.Clone(cloneRect, format);
-            pictureBox1.Image = cloneBitmap;
-            if (GetBlackDots(top, x, cloneBitmap) == true)
-            {
-                goto Relapse;
-            }
-  
-            
+                System.Drawing.Imaging.PixelFormat format =
+                    img.PixelFormat;
+                cloneBitmap = img.Clone(cloneRect, format);
+                pictureBox1.Image = cloneBitmap;
+                if (GetBlackDots(top, x, cloneBitmap) == true)
+                {
+                    goto Relapse;
+                }
+
+
                 //goto Ext;
                 page = textDetect(cloneBitmap);
 
@@ -405,12 +432,12 @@ namespace CMTransRev
                     //        goto Relapse;
                 }
 
-            
-               
-            // Draw the cloned portion of the Bitmap object.
-            label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
-           // Ext:;
 
+
+                // Draw the cloned portion of the Bitmap object.
+                label1.Text = "Confidence: " + page.GetMeanConfidence().ToString();
+                // Ext:;
+            } while (top < (img.Height - j));
         }
 
         public Boolean GetBlackDots(int j, int i, Bitmap pic)
@@ -426,7 +453,7 @@ namespace CMTransRev
                 for (int x = 0; x < img.Width; x++)
                 {
                     pixelColor = img.GetPixel(x, j + y);
-                if (pixelColor.R <= 200 && pixelColor.G <= 200 && pixelColor.B <= 200)
+                if (pixelColor.R <= 250 && pixelColor.G <= 250 && pixelColor.B <= 250)
                     return true;
                        // list.Add(String.Format("x:{0} y:{1}", x, j));
                 }
